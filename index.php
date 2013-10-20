@@ -13,8 +13,8 @@ define('FIRSTMVC_INSTALL_PATH', dirname(__FILE__));
 define('FIRSTMVC_SITE_PATH', FIRSTMVC_INSTALL_PATH . '/site');
 
 //Debug-testing of PATH's
-echo FIRSTMVC_INSTALL_PATH . "<br>";
-echo FIRSTMVC_SITE_PATH;
+echo "FIRSTMVC_INSTALL_PATH: " . FIRSTMVC_INSTALL_PATH . "<br>";
+echo "FIRSTMVC_SITE_PATH: " . FIRSTMVC_SITE_PATH;
 
 require(FIRSTMVC_INSTALL_PATH . '/src/CFirstMVC/bootstrap.php');
 
