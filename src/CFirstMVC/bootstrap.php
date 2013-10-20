@@ -21,7 +21,7 @@ function autoload($aClassName) {
 	{
 		require_once($file1);
 
-	} elseif(is_file($file2))
+	}elseif(is_file($file2))
 	{
 		require_once($file2);
 	}
