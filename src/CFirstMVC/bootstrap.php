@@ -12,6 +12,11 @@ function autoload($aClassName) {
 	$classFile = "/src/{$aClassName}/{$aClassName}.php";
 	$file1 = FIRSTMVC_SITE_PATH . $classFile;
 	$file2 = FIRSTMVC_INSTALL_PATH . $classFile;
+
+	//Debugging for file1 & file2:
+	echo "\$file1 = " . $file1 . "<br>";
+	echo "\$file2 = " . $file2;
+	
 	if(is_file($file1)) 
 	{
 		require_once($file1);
