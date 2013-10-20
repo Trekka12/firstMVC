@@ -14,8 +14,8 @@ function autoload($aClassName) {
 	$file2 = FIRSTMVC_INSTALL_PATH . $classFile;
 
 	//Debugging for file1 & file2:
-	echo "<br><br> DEBUGGING BOOTSTRAP:<br>\$file1 = " . $file1 . "<br>";
-	echo "\$file2 = " . $file2;
+	//echo "<br><br> DEBUGGING BOOTSTRAP:<br>\$file1 = " . $file1 . "<br>";
+	//echo "\$file2 = " . $file2;
 
 	if(is_file($file1)) 
 	{
