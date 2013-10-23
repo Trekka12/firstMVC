@@ -81,6 +81,7 @@ class CFirstMVC implements ISingleton {
 		{
 			die('404. Page is not found.');
 		}
+	}
 
 	/**
 	 *	Theme Engine Render, renders the views using the selected theme.
