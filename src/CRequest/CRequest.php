@@ -20,7 +20,7 @@ class CRequest {
 		$splits = explode('/', trim($query, '/'));
 
 		//Debugging
-		echo "Echoa ut \$splits och dess innehåll: " . print_r($splits) . "<br><br>";
+		echo "Echoa ut \$splits och dess innehåll: " . print_r($splits, true) . "<br><br>";
 
 		//	Set controller, method and arguments
 		$controller = !empty($splits[0]) ? $splits[0] : 'index';
@@ -48,12 +48,12 @@ class CRequest {
 		$arguments = $splits;
 
 		//Debugging
-		echo "Echoa ut \$arguments innan [0] &amp; [1] unsettas: " . print_r($arguments) . "<br><br>";
+		echo "Echoa ut \$arguments innan [0] &amp; [1] unsettas: " . print_r($arguments, true) . "<br><br>";
 
 		unset($arguments[0], $arguments[1]); //remove controller & method part from argument list
 
 		//Debugging
-		echo "Echoa ut \$arguments efter att [0] &amp; [1] unsettades - visa vad som finns kvar: " . print_r($arguments) . "<br><br>";
+		echo "Echoa ut \$arguments efter att [0] &amp; [1] unsettades - visa vad som finns kvar: " . print_r($arguments, true) . "<br><br>";
 
 		//	Store it
 		$this->request_uri = $_SERVER['REQUEST_URI'];
