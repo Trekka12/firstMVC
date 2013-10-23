@@ -15,18 +15,18 @@ class CRequest {
 			'/')));
 
 		//Debugging
-		//echo "Echoa ut \$queryn: " . $query;
+		echo "Echoa ut \$queryn: " . $query;
 
 		$splits = explode('/', trim($query, '/'));
 
 		//Debugging
-		//echo "Echoa ut \$splits och dess innehåll: " . $splits;
+		echo "Echoa ut \$splits och dess innehåll: " . $splits;
 
 		//	Set controller, method and arguments
 		$controller = !empty($splits[0]) ? $splits[0] : 'index';
 
 		//Debugging
-		//echo "Echoa ut \$controller som blir \$splits[0] eller index: " . $controller;
+		echo "Echoa ut \$controller som blir \$splits[0] eller index: " . $controller;
 
 		/*
 			Attempt of IF-Statement for the above code (for own personal understanding)
@@ -43,17 +43,17 @@ class CRequest {
 		$method = !empty($splits[1]) ? $splits[1] : 'index';
 
 		//Debugging
-		//echo "Echoa ut \$method som blir tilldelad \$splits[1] eller index: " . $method;
+		echo "Echoa ut \$method som blir tilldelad \$splits[1] eller index: " . $method;
 
 		$arguments = $splits;
 
 		//Debugging
-		//echo "Echoa ut \$arguments innan [0] &amp; [1] unsettas: " . $arguments;
+		echo "Echoa ut \$arguments innan [0] &amp; [1] unsettas: " . $arguments;
 
 		unset($arguments[0], $arguments[1]); //remove controller & method part from argument list
 
 		//Debugging
-		//echo "Echoa ut \$arguments efter att [0] &amp; [1] unsettades - visa vad som finns kvar: " . $arguments;
+		echo "Echoa ut \$arguments efter att [0] &amp; [1] unsettades - visa vad som finns kvar: " . $arguments;
 
 		//	Store it
 		$this->request_uri = $_SERVER['REQUEST_URI'];
