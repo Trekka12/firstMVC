@@ -15,7 +15,7 @@ class CRequest {
 			'/')));
 
 		//Debugging
-		echo $query;
+		//echo $query;
 
 		$splits = explode('/', trim($query, '/'));
 
