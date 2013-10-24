@@ -96,7 +96,7 @@ class CFirstMVC implements ISingleton {
 		//	Get the paths and settings for the theme
 		$themeName	= $this->config['theme']['name'];
 		$themePath	= $FIRSTMVC_INSTALL_PATH . "/themes/{$themeName}";
-		$themeUrl	= "themes/{themeName}";
+		$themeUrl	= "themes/{$themeName}";
 
 		//	Add stylesheet path to the $firstMVC->data array
 		$this->data['stylesheet'] = "{$themeUrl}/style.css";
