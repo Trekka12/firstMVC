@@ -42,3 +42,10 @@ $firstMVC->config['language'] = 'en';
 $firstMVC->config['controllers'] = array(
 	'index' => array('enabled' => true, 'class' => 'CCIndex'),
 	);
+
+/*
+*	Settings for the theme.
+*/
+$firstMVC->config['theme'] = array(
+	//	The name of the theme in the theme directory
+	'name' => 'core');

@@ -1,0 +1,21 @@
+/**
+*	Description: Core theme for FirstMVC
+*/
+
+/*
+============================================
+	Structure
+============================================
+*/
+html {}
+body {
+	background-color: #eee;
+	font-size: 1em;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+#header, #main, #footer {
+	margin: 0 auto;
+	width: 970px;
+	background-color: #fff;
+	padding: 1em;
+}
