@@ -87,7 +87,7 @@ class CFirstMVC implements ISingleton {
 	 *	Theme Engine Render, renders the views using the selected theme.
 	 */
 	public function ThemeEngineRender() {
-		//echo "<h1> I am CFirstMVC::ThemeEngineRender</h1><p>You are most welcome. Nothing to render at the moment</p>";
+		echo "<h1> I am CFirstMVC::ThemeEngineRender</h1><p>You are most welcome. Nothing to render at the moment</p>";
 		////echo "<pre>", print_r($this->data, true) . "</pre>";
 		//echo "<h2>The content of the config array:</h2><pre>", htmlentities(print_r($this->config, true)) . "</pre>";
 		//echo "<h2>The content of the data array:</h2><pre>", htmlentities(print_r($this->data, true)) . "</pre>";
