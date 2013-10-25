@@ -15,7 +15,9 @@ class CRequest {
 		//==========================================================================
 		//	Take the current url and divide it in controller, method and arguments
 		//==========================================================================
-		$query = substr($_SERVER['REQUEST_URI'], strlen(rtrim(dirname($_SERVER['SCRIPT_NAME']),
+		$scriptName = $_SERVER['SCRIPT_NAME'];
+		$requestUri = $SERVER['REQUEST_URI'];
+		$query = substr($requestUri, strlen(rtrim(dirname($scriptName),
 			'/')));
 
 		#Debugging of $query:
@@ -82,8 +84,8 @@ class CRequest {
 		$this->base_url		= rtrim($baseUrl, '/') . '/';
 		$this->current_url	= $currentUrl;
 
-		$this->request_uri = $_SERVER['REQUEST_URI'];
-		$this->script_name = $_SERVER['SCRIPT_NAME'];
+		$this->request_uri = $requestUri;
+		$this->script_name = $scriptName;
 		$this->query       = $query;
 		$this->splits      = $splits;
 		$this->controller  = $controller;
