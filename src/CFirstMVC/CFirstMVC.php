@@ -32,13 +32,14 @@ class CFirstMVC implements ISingleton {
 	 *	Frontcontroller, check url and route to controllers.
 	 */
 	public function FrontControllerRoute() {
+		//Old code:
 		//$this->data['debug']  = "REQUEST_URI - {$_SERVER['REQUEST_URI']}\n";
 		//$this->data['debug'] .= "SCRIPT_NAME - {$_SERVER['SCRIPT_NAME']}\n";
 
 		//	Step 1
 		//	Take current url and divide it in controller, method and parameters
 		$this->request = new CRequest();
-		$this->request->Init();
+		$this->request->Init($this->config['base_url']);
 		$controller = $this->request->controller;
 		$method = $this->request->method;
 		$arguments = $this->request->arguments;
@@ -101,13 +102,21 @@ class CFirstMVC implements ISingleton {
 		//	Get the paths and settings for the theme
 		$themeName	= $this->config['theme']['name'];
 		$themePath	= FIRSTMVC_INSTALL_PATH . "/themes/{$themeName}";
-		$themeUrl	= "themes/{$themeName}";
+		$themeUrl	= $this->request->base_url . "themes/{$themeName}";
 
 		//	Add stylesheet path to the $firstMVC->data array
 		$this->data['stylesheet'] = "{$themeUrl}/style.css";
 
 		//	Include the global functions.php and the functions.php that are part of the theme
 		$firstMVC = &$this;
+
+		$GlobalThemeFunctionsPath = FIRSTMVC_INSTALL_PATH . "/themes/functions.php";
+		//include $GlobalThemeFunctionsPath;
+		if(is_file($GlobalThemeFunctionsPath))
+		{
+			include $GlobalThemeFunctionsPath;
+		}
+
 		$functionsPath = "{$themePath}/functions.php";
 		if(is_file($functionsPath))
 		{

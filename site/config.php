@@ -55,4 +55,3 @@ $firstMVC->config['theme'] = array(
 */
 $firstMVC->config['base_url'] = null;
 
-

@@ -81,7 +81,7 @@ class CRequest {
 		//	Store it
 		$this->base_url		= rtrim($baseUrl, '/') . '/';
 		$this->current_url	= $currentUrl;
-		
+
 		$this->request_uri = $_SERVER['REQUEST_URI'];
 		$this->script_name = $_SERVER['SCRIPT_NAME'];
 		$this->query       = $query;
@@ -90,4 +90,17 @@ class CRequest {
 		$this->method      = $method;
 		$this->arguments   = $arguments;
 	}
+
+	/**
+     *	Get the url to the current page. 
+     */
+	public function GetCurrentUrl() {
+	    $url = "http";
+	    $url .= (@$_SERVER["HTTPS"] == "on") ? 's' : '';
+	    $url .= "://";
+	    $serverPort = ($_SERVER["SERVER_PORT"] == "80") ? '' :
+	    (($_SERVER["SERVER_PORT"] == 443 && @$_SERVER["HTTPS"] == "on") ? '' : ":{$_SERVER['SERVER_PORT']}");
+	    $url .= $_SERVER["SERVER_NAME"] . $serverPort . htmlspecialchars($_SERVER["REQUEST_URI"]);
+	    return $url;
+  }
 }
