@@ -49,3 +49,10 @@ $firstMVC->config['controllers'] = array(
 $firstMVC->config['theme'] = array(
 	//	The name of the theme in the theme directory
 	'name' => 'core');
+
+/**
+*	Set a base_url to use another than the default calculated
+*/
+$firstMVC->config['base_url'] = null;
+
+
