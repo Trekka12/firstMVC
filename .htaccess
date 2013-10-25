@@ -4,7 +4,7 @@
 	# Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/ <- lägger till sista snedstrecket för alla URL:er (utom filer och kataloger)
 	# RewriteBase /change/this/to/site/base/url/if/needed/
 
-	RewriteBase /~ansy12/www/phpmvc/kmom02/firstMVC/
+	RewriteBase /~ansy12/phpmvc/kmom02/firstMVC/
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule (.*) index.php/$1 [NC,L]
