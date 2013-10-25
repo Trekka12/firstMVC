@@ -16,7 +16,7 @@ class CRequest {
 		//	Take the current url and divide it in controller, method and arguments
 		//==========================================================================
 		$scriptName = $_SERVER['SCRIPT_NAME'];
-		$requestUri = $SERVER['REQUEST_URI'];
+		$requestUri = $_SERVER['REQUEST_URI'];
 		$query = substr($requestUri, strlen(rtrim(dirname($scriptName),
 			'/')));
 
