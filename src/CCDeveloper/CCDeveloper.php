@@ -17,6 +17,7 @@ class CCDeveloper implements IController {
 	 */
 	public function Links() {
 		$this->Menu();
+		
 		$firstMVC = CFirstMVC::Instance();
 
 		$url = 'developer/links';

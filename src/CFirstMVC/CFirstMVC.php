@@ -7,6 +7,16 @@
 class CFirstMVC implements ISingleton {
 	private static $instance = null;
 
+
+	/**
+	 *	Constructor
+	 */
+	protected function __construct() {
+		//include the site specific config.php and create a reference to $firstMVC to be used by config.php
+		$firstMVC = &$this;
+		require(FIRSTMVC_SITE_PATH . '/config.php');
+	}
+
 	/**
 	 *	Singleton pattern. Get the instance of the latest created object or create a new one.
 	 *	@return CFirstMVC The instance of this class.
@@ -19,14 +29,7 @@ class CFirstMVC implements ISingleton {
 		return self::$instance;
 	}
 
-	/**
-	 *	Constructor
-	 */
-	protected function __construct() {
-		//include the site specific config.php and create a reference to $firstMVC to be used by config.php
-		$firstMVC = &$this;
-		require(FIRSTMVC_SITE_PATH . '/config.php');
-	}
+	
 
 	/**
 	 *	Frontcontroller, check url and route to controllers.
@@ -38,7 +41,7 @@ class CFirstMVC implements ISingleton {
 
 		//	Step 1
 		//	Take current url and divide it in controller, method and parameters
-		$this->request = new CRequest();
+		$this->request = new CRequest($this->config['url_type']);
 		$this->request->Init($this->config['base_url']);
 		$controller = $this->request->controller;
 		$method = $this->request->method;
@@ -110,12 +113,7 @@ class CFirstMVC implements ISingleton {
 		//	Include the global functions.php and the functions.php that are part of the theme
 		$firstMVC = &$this;
 
-		$GlobalThemeFunctionsPath = FIRSTMVC_INSTALL_PATH . "/themes/functions.php";
-		//include $GlobalThemeFunctionsPath;
-		if(is_file($GlobalThemeFunctionsPath))
-		{
-			include $GlobalThemeFunctionsPath;
-		}
+		include (FIRSTMVC_INSTALL_PATH . "/themes/functions.php");
 
 		$functionsPath = "{$themePath}/functions.php";
 		if(is_file($functionsPath))
