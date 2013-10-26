@@ -55,3 +55,11 @@ $firstMVC->config['theme'] = array(
 */
 $firstMVC->config['base_url'] = null;
 
+/**
+*	What type of urls should be used?
+*
+*	default 	= 0		=>	index.php/controller/method/arg1/arg2/arg3
+*	clean 		= 1		=>	controller/method/arg1/arg2/arg3
+*	querystring = 2		=>	index.php?q=controller/method/arg1/arg2/arg3
+*/
+$firstMVC->config['url_type'] = 1;

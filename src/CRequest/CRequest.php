@@ -7,7 +7,11 @@
 class CRequest {
 
 	/**
-	 *	Initiate (Init) the object by parsing the current url request.
+	 *	Parse the current url request and divide it in controller, method and arguments.
+	 *	
+	 *	Calculates the base_url of the installation. Stores all useful details in $this.
+	 *
+	 *	@param $baseUrl string - use this as a hardcoded baseurl.
 	 */
 	public function Init($baseUrl = null) {
 		//For debug-information
@@ -17,18 +21,51 @@ class CRequest {
 		//==========================================================================
 		$scriptName = $_SERVER['SCRIPT_NAME'];
 		$requestUri = $_SERVER['REQUEST_URI'];
-		$query = substr($requestUri, strlen(rtrim(dirname($scriptName),
-			'/')));
+		
+		//	Check if url is in format controller/method/arg1/arg2/arg3 by comparing requestUri with scriptName
+		//	if they are match => declare $scriptPart to the directory name of $scriptName.
+		if(substr_compare($requestUri, $scriptName, 0, strlen($scriptName)))
+		{
+			$scriptPart = dirname($scriptName);
+		}
 
-		#Debugging of $query:
+		$query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/');
+
+		#Debugging of $query - old code:
 		$debugString .= "Echoa ut \$queryn: " . $query . "<br><br>\n";
 		#-------------------------------------------------------------
 
-		$splits = explode('/', trim($query, '/'));
+		//	Check if this looks like a querystring approach link 
+		//	(e.g. (e.g. = latin for exampli gratia => english translation = "For example" (for own personal (finally :P) understanding)
+		//	and i.e. = Latin for id est => english translation = "that is") 'index.php?q=')
+		if(substr($query, 0, 1) === '?' && isset($_GET['q']))
+		{
+			$query = trim($_GET['q']);
+		}
 
-		#Debugging of $splits content:
+		$splits = explode('/', $query);
+
+		#Debugging of $splits content - old code:
 		$debugString .= "Echoa ut \$splits och dess innehåll: " . print_r($splits, true) . "<br><br>\n";
 		#-----------------------------------------------------------------------------------------------
+
+		/*
+			Test code customized by self to try and solve issue with index.php/controller/method/arg1/arg2/arg3 links, as well as
+			index.php?q=/controller/method/arg1/arg2/arg3
+			- Note to self: would be a statical solution... => meaning if q= were to be changed to f= or p= then would not work.
+
+			if(substr($länken, 0, 9) == "index.php")
+			{
+				
+					Gör då som så att strippa länken/$queryn av sin index.php början, och returnera sedan $query som blir över. 
+				
+			}elseif(substr($länken, 0, 12) == "index.php?q=")
+			{
+				
+					Gör då som så att strippa bort de 12 första tecknen med substr, och returnera återstoden av länken som $query.
+				
+			}
+		*/
 
 		//==================================================================
 		//	Set controller, method and arguments
@@ -104,5 +141,26 @@ class CRequest {
 	    (($_SERVER["SERVER_PORT"] == 443 && @$_SERVER["HTTPS"] == "on") ? '' : ":{$_SERVER['SERVER_PORT']}");
 	    $url .= $_SERVER["SERVER_NAME"] . $serverPort . htmlspecialchars($_SERVER["REQUEST_URI"]);
 	    return $url;
+  }
+
+  /**
+   *	Create a url in the way it should be created.
+   */
+  public function CreateUrl($url = null) {
+  	$prepend = $this->base_url;
+  	if($this->cleanUrl)
+  	{
+  		;
+
+  	}elseif($this->querystringUrl)
+  	{
+  		$prepend .= 'index.php?q=';
+  	
+  	}else
+  	{
+  		$prepend .= 'index.php/';
+  	}
+  	
+  	return $prepend . rtrim($url, '/');
   }
 }
