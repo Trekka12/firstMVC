@@ -23,7 +23,7 @@ class CCDeveloper implements IController {
 		$current = $firstMVC->request->CreateUrl($url);
 
 		$firstMVC->request->cleanUrl = false;
-		$firstMVC->request->queryStringUrl = false;
+		$firstMVC->request->querystringUrl = false;
 		$default = $firstMVC->request->CreateUrl($url);
 
 		$firstMVC->request->cleanUrl = true;

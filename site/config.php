@@ -10,6 +10,20 @@
 error_reporting(-1);
 ini_set('display_errors', 1);
 
+/**
+*	What type of urls should be used?
+*
+*	default 	= 0		=>	index.php/controller/method/arg1/arg2/arg3
+*	clean 		= 1		=>	controller/method/arg1/arg2/arg3
+*	querystring = 2		=>	index.php?q=controller/method/arg1/arg2/arg3
+*/
+$firstMVC->config['url_type'] = 1;
+
+/**
+*	Set a base_url to use another than the default calculated
+*/
+$firstMVC->config['base_url'] = null;
+
 /*
 *	Define session name
 */
@@ -41,6 +55,7 @@ $firstMVC->config['language'] = 'en';
 */
 $firstMVC->config['controllers'] = array(
 	'index' => array('enabled' => true, 'class' => 'CCIndex'),
+	'developer' => array('enabled' => true, 'class' => 'CCDeveloper')
 	);
 
 /*
@@ -50,16 +65,4 @@ $firstMVC->config['theme'] = array(
 	//	The name of the theme in the theme directory
 	'name' => 'core');
 
-/**
-*	Set a base_url to use another than the default calculated
-*/
-$firstMVC->config['base_url'] = null;
 
-/**
-*	What type of urls should be used?
-*
-*	default 	= 0		=>	index.php/controller/method/arg1/arg2/arg3
-*	clean 		= 1		=>	controller/method/arg1/arg2/arg3
-*	querystring = 2		=>	index.php?q=controller/method/arg1/arg2/arg3
-*/
-$firstMVC->config['url_type'] = 1;
